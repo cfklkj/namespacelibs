@@ -1,0 +1,2 @@
+# namespacelibs
+windows api packages
