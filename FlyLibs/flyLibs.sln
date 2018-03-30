@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FlyLibs", "flyLibs.vcxproj", "{03FB3360-7B2A-4C1D-AFEB-C5FCAF258E8E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Demo", "Demo\Demo.vcxproj", "{3D6A64A8-80D4-4AEA-9112-6644B24A012C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		driver|x64 = driver|x64
+		driver|x86 = driver|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03FB3360-7B2A-4C1D-AFEB-C5FCAF258E8E}.Debug|x64.ActiveCfg = Debug|x64
+		{03FB3360-7B2A-4C1D-AFEB-C5FCAF258E8E}.Debug|x64.Build.0 = Debug|x64
+		{03FB3360-7B2A-4C1D-AFEB-C5FCAF258E8E}.Debug|x86.ActiveCfg = Debug|Win32
+		{03FB3360-7B2A-4C1D-AFEB-C5FCAF258E8E}.Debug|x86.Build.0 = Debug|Win32
+		{03FB3360-7B2A-4C1D-AFEB-C5FCAF258E8E}.driver|x64.ActiveCfg = Debug|x64
+		{03FB3360-7B2A-4C1D-AFEB-C5FCAF258E8E}.driver|x64.Build.0 = Debug|x64
+		{03FB3360-7B2A-4C1D-AFEB-C5FCAF258E8E}.driver|x86.ActiveCfg = Debug|Win32
+		{03FB3360-7B2A-4C1D-AFEB-C5FCAF258E8E}.driver|x86.Build.0 = Debug|Win32
+		{03FB3360-7B2A-4C1D-AFEB-C5FCAF258E8E}.Release|x64.ActiveCfg = Release|x64
+		{03FB3360-7B2A-4C1D-AFEB-C5FCAF258E8E}.Release|x64.Build.0 = Release|x64
+		{03FB3360-7B2A-4C1D-AFEB-C5FCAF258E8E}.Release|x86.ActiveCfg = Release|Win32
+		{03FB3360-7B2A-4C1D-AFEB-C5FCAF258E8E}.Release|x86.Build.0 = Release|Win32
+		{3D6A64A8-80D4-4AEA-9112-6644B24A012C}.Debug|x64.ActiveCfg = Debug|x64
+		{3D6A64A8-80D4-4AEA-9112-6644B24A012C}.Debug|x64.Build.0 = Debug|x64
+		{3D6A64A8-80D4-4AEA-9112-6644B24A012C}.Debug|x86.ActiveCfg = Debug|Win32
+		{3D6A64A8-80D4-4AEA-9112-6644B24A012C}.Debug|x86.Build.0 = Debug|Win32
+		{3D6A64A8-80D4-4AEA-9112-6644B24A012C}.driver|x64.ActiveCfg = driver|x64
+		{3D6A64A8-80D4-4AEA-9112-6644B24A012C}.driver|x64.Build.0 = driver|x64
+		{3D6A64A8-80D4-4AEA-9112-6644B24A012C}.driver|x86.ActiveCfg = driver|Win32
+		{3D6A64A8-80D4-4AEA-9112-6644B24A012C}.driver|x86.Build.0 = driver|Win32
+		{3D6A64A8-80D4-4AEA-9112-6644B24A012C}.Release|x64.ActiveCfg = Release|x64
+		{3D6A64A8-80D4-4AEA-9112-6644B24A012C}.Release|x64.Build.0 = Release|x64
+		{3D6A64A8-80D4-4AEA-9112-6644B24A012C}.Release|x86.ActiveCfg = Release|Win32
+		{3D6A64A8-80D4-4AEA-9112-6644B24A012C}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8608DB14-B743-4476-89EA-87D66DB410CF}
+	EndGlobalSection
+EndGlobal
