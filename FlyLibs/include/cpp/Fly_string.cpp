@@ -1,4 +1,5 @@
 #include "..\Fly_string.h"
+#include "..\FlyDefine.h"
 #include <Windows.h> 
 #include <string>
 #pragma warning(disable:4996)
@@ -272,7 +273,7 @@ namespace Fly_string{
 		if (*temp == 0)
 			return Fullstr;
 		else
-			return NULL;
+			return "";
 	}
 	//¿½±´×Ö·û´®
 	char* strMalloc(const char* _source)
@@ -296,5 +297,14 @@ namespace Fly_string{
 		}
 		*cmdStr = 0;
 		return mcBuff;
+	}
+	//ÏÔÊ¾ÐÅÏ¢
+	void debugPrint(const char* format, ...)
+	{
+#ifdef _DEBUG
+		std::string prf = "";
+		_FLY_STRING_FindBitSub_FORMAT(format, prf);
+		printf("%s\n", prf.c_str());
+#endif 
 	}
 }

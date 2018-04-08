@@ -31,4 +31,6 @@ namespace Fly_string {
 	char* strMalloc(const char* _source);
 	//释放
 	void freeChar(char *pstr);
+	//debug显示信息
+	void debugPrint(const char* format, ...);
 }  

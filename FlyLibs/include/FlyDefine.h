@@ -44,3 +44,23 @@ else\
 }\
 	rstValue = (subStrLen == j); \
 }
+//fomat ×Ö·û´®
+#define  _FLY_STRING_FindBitSub_FORMAT(format, retString) \
+{ \
+char* va_dataResult = NULL; \
+int va_bufferLen = 4096; \
+int va_actualLen = 0; \
+va_list list; \
+va_start(list, format); \
+do {\
+	if(va_dataResult) {\
+		free(va_dataResult);	\
+	}\
+	va_bufferLen *= 2;\
+	va_dataResult = (char*)calloc(1, va_bufferLen);\
+	va_actualLen = vsnprintf(va_dataResult, va_bufferLen, format, list);\
+} while(va_actualLen == va_bufferLen);	\
+va_end(list); \
+retString = va_dataResult; \
+free(va_dataResult); \
+}

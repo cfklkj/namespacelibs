@@ -20,10 +20,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="include\cpp\Fly_string.cpp" />
+    <ClCompile Include="include\cpp\Fly_sys_cpu.cpp" />
+    <ClCompile Include="include\cpp\Fly_web_html.cpp" />
+    <ClCompile Include="include\cpp\fly_web_iocp.cpp" />
+    <ClCompile Include="include\cpp\Fly_web_raw.cpp" />
+    <ClCompile Include="include\cpp\Fly_web_set.cpp" />
+    <ClCompile Include="include\cpp\Fly_web_tcp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\FlyDefine.h" />
     <ClInclude Include="include\Fly_string.h" />
+    <ClInclude Include="include\Fly_sys.h" />
+    <ClInclude Include="include\Fly_web.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

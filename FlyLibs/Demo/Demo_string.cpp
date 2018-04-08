@@ -3,7 +3,7 @@
 #include "..\include\FlyDefine.h" 
 #pragma comment(lib, "..\\libs\\debug\\flyLibs")
 //#pragma comment(lib, "User32")
-#define DemoString
+#define DemoString1
 #ifdef DemoString
 void main()
 #else
