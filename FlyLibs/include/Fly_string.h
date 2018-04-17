@@ -30,7 +30,5 @@ namespace Fly_string {
 	//拷贝字符串
 	char* strMalloc(const char* _source);
 	//释放
-	void freeChar(char *pstr);
-	//debug显示信息
-	void debugPrint(const char* format, ...);
+	void freeChar(char *pstr); 
 }  

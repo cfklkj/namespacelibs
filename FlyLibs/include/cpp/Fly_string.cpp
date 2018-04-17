@@ -297,14 +297,5 @@ namespace Fly_string{
 		}
 		*cmdStr = 0;
 		return mcBuff;
-	}
-	//œ‘ æ–≈œ¢
-	void debugPrint(const char* format, ...)
-	{
-#ifdef _DEBUG
-		std::string prf = "";
-		_FLY_STRING_FindBitSub_FORMAT(format, prf);
-		printf("%s\n", prf.c_str());
-#endif 
-	}
+	} 
 }
