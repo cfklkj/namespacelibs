@@ -242,6 +242,15 @@ namespace Fly_string{
 			rst += *wtemp++;
 		return rst;
 	}
+	std::string GetSubStr(const char* pwzStr, const char* pstr, int index)
+	{
+		if (!pwzStr)
+			return ""; 
+		std::string rst = pFindSub(pwzStr, pstr);
+		if (index > 1)
+			return GetSubStr(rst.c_str(), pstr, --index); 
+		return pFindSub_retHead(pwzStr, pstr);
+	}
 	//×Ö·û´®²éÕÒ 
 	bool FindSub(const char* Fullstr, const char* subStr)
 	{
@@ -275,6 +284,27 @@ namespace Fly_string{
 		else
 			return "";
 	}
+	std::string pFindSub_retHead(const char* Fullstr, const char* subStr)
+	{
+		const char* temp = subStr;
+		std::string rstStr = "";
+		while (*Fullstr != 0 && *temp != 0)
+		{
+			rstStr.push_back(*Fullstr);
+			if (*Fullstr++ == *temp)
+			{
+				temp++;
+			}
+			else
+			{
+				temp = subStr;
+			}
+		}
+		if (*temp == 0)
+			return rstStr.substr(0, rstStr.size() -strlen(subStr));
+		else
+			return rstStr;
+	}
 	//¿½±´×Ö·û´®
 	char* strMalloc(const char* _source)
 	{
@@ -298,4 +328,11 @@ namespace Fly_string{
 		*cmdStr = 0;
 		return mcBuff;
 	} 
+
+	std::string format(const char* formatStr, ...)
+	{
+		std::string rstStr = "";
+		_FLY_STRING_FindBitSub_FORMAT(formatStr, rstStr);
+		return rstStr;
+	}
 }

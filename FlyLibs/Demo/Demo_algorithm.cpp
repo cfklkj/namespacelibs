@@ -4,7 +4,7 @@
 #include "..\include\fly_string.h" 
 #pragma comment(lib, "..\\libs\\debug\\flyLibs")
 //#pragma comment(lib, "User32")
-#define DemoAlgorithm
+#define DemoAlgorithm1
 #ifdef DemoAlgorithm
 void main()
 #else

@@ -23,12 +23,17 @@ namespace Fly_string {
 	std::string pToStr(char* pwzStr, char wChr, bool isLast = false);
 	//提取字符串
 	std::string GetSubStr(const char* pwzStr, char wChr, int index);
+	std::string GetSubStr(const char* pwzStr, const char* wChr, int index);
 	//字符串查找 
 	bool FindSub(const char* Fullstr, const char* subStr);
-	//查找字符串返回指针
+	//查找字符串返回指针 --返回查找到的字符串之后的内容
 	std::string pFindSub(const char* Fullstr, const char* subStr);
+	//查找字符串返回指针 --返回查找到的字符串之前的内容
+	std::string pFindSub_retHead(const char* Fullstr, const char* subStr);
 	//拷贝字符串
 	char* strMalloc(const char* _source);
 	//释放
-	void freeChar(char *pstr); 
+	void freeChar(char *pstr);
+	//格式化信息
+	std::string format(const char* formatStr, ...);
 }  
