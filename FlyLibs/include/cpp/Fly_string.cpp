@@ -335,4 +335,21 @@ namespace Fly_string{
 		_FLY_STRING_FindBitSub_FORMAT(formatStr, rstStr);
 		return rstStr;
 	}
+
+	//不区分大小写比较字符串是否相等
+	bool noCaseCompare(const char* A, const char* B)
+	{
+		bool isSame = true;
+		while (*A != '\0' && *B != '\0')
+		{
+			char TA = *A++;
+			char TB = *B++;
+			if ((TA |= 0x20) != (TB |= 0x20))
+			{
+				isSame = false;
+				break;
+			}
+		} 
+		return isSame;
+	}
 }

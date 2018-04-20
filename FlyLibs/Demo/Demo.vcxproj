@@ -27,6 +27,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Demo_algorithm.cpp" />
+    <ClCompile Include="Demo_file.cpp" />
+    <ClCompile Include="Demo_reg.cpp" />
     <ClCompile Include="Demo_string.cpp" />
     <ClCompile Include="Demo_web.cpp" />
   </ItemGroup>

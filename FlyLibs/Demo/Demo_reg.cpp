@@ -8,7 +8,7 @@
 #include "Shlwapi.h"
 #pragma comment(lib, "Shlwapi")
  
-#define DemoReg
+#define DemoReg1
 //¹ØÁª³ÌÐò
 std::string RegWithExe(std::string& exePath, std::string protoName);
 

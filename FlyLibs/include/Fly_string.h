@@ -36,4 +36,7 @@ namespace Fly_string {
 	void freeChar(char *pstr);
 	//格式化信息
 	std::string format(const char* formatStr, ...);
+
+	//不区分大小写比较字符串是否相等
+	bool noCaseCompare(const char* A, const char* B);
 }  
