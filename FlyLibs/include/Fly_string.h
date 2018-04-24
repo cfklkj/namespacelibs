@@ -39,4 +39,12 @@ namespace Fly_string {
 
 	//不区分大小写比较字符串是否相等
 	bool noCaseCompare(const char* A, const char* B);
+
+	/*
+	string to time_t
+	时间格式 2018-4-24 0:00:08 或 2018-4-24
+	成功返回 0
+	*/
+	int stringToTime(const std::string &strDateStr, time_t &timeData);
+
 }  

@@ -3,6 +3,7 @@
 #include <Windows.h> 
 #include <fstream>
 #include <io.h>
+#include "Shlobj.h"
 #include <ShellAPI.h>
 #include <Shlwapi.h>
 
@@ -173,7 +174,88 @@ namespace Fly_file {
 			} while (_findnext(Handle, &FileInfo) == 0);
 			_findclose(Handle);
 			return rstStr;
-		} 
+		}
+		//获取特殊目录  --两种dll动态调用方式
+		std::string getFolderPath(int iCSIDL)
+		{
+			std::string strFolderPath;
+
+			// Try the Unicode version from "shell32" *and* examine the function result - just the presence of that
+			// function does not mean that it returns the requested path.
+			//
+			// Win98: 'SHGetFolderPathW' is available in 'shell32.dll', but it does not support all of the CSIDL values.
+			HRESULT(WINAPI *pfnSHGetFolderPathW)(HWND, int, HANDLE, DWORD, LPWSTR);
+			(FARPROC&)pfnSHGetFolderPathW = GetProcAddress(GetModuleHandle("shell32"), "SHGetFolderPathW");
+			if (pfnSHGetFolderPathW)
+			{
+				WCHAR wszPath[MAX_PATH];
+				if ((*pfnSHGetFolderPathW)(NULL, iCSIDL, NULL, SHGFP_TYPE_CURRENT, wszPath) == S_OK)
+				{ 
+					strFolderPath = Fly_string::w2c(wszPath); 
+				}
+			}
+			if (strFolderPath.empty())
+			{
+				HMODULE hLibShFolder = LoadLibrary("shfolder.dll");
+				if (hLibShFolder)
+				{
+					HRESULT(WINAPI *pfnSHGetFolderPathW)(HWND, int, HANDLE, DWORD, LPWSTR);
+					(FARPROC&)pfnSHGetFolderPathW = GetProcAddress(hLibShFolder, "SHGetFolderPathW");
+					if (pfnSHGetFolderPathW)
+					{
+						WCHAR wszPath[MAX_PATH];
+						if ((*pfnSHGetFolderPathW)(NULL, iCSIDL, NULL, SHGFP_TYPE_CURRENT, wszPath) == S_OK)
+						{ 
+							strFolderPath = Fly_string::w2c(wszPath); 
+						}
+					}
+
+					if (strFolderPath.empty())
+					{
+						HRESULT(WINAPI *pfnSHGetFolderPathA)(HWND, int, HANDLE, DWORD, LPSTR);
+						(FARPROC&)pfnSHGetFolderPathA = GetProcAddress(hLibShFolder, "SHGetFolderPathA");
+						if (pfnSHGetFolderPathA)
+						{
+							CHAR aszPath[MAX_PATH];
+							if ((*pfnSHGetFolderPathA)(NULL, iCSIDL, NULL, SHGFP_TYPE_CURRENT, aszPath) == S_OK)
+								strFolderPath = aszPath;
+						}
+					}
+					FreeLibrary(hLibShFolder);
+				}
+			}
+
+			return strFolderPath;
+		}
+		//获取环境变量对应路径  如 %temp%  -> c:\windows\temp
+		std::string getEnvironmentString(const std::string& rstrStrings)
+		{
+			//相同功能GetEnvironmentVariable(L"temp", buff, 256)  --SetEnvironmentVariable
+			DWORD dwSize = ExpandEnvironmentStrings(rstrStrings.c_str(), NULL, 0);
+			if (dwSize == 0)
+				return false;
+
+			char * strExpanded = new char[dwSize + 1];
+			DWORD dwCount = ExpandEnvironmentStrings(rstrStrings.c_str(), strExpanded, dwSize);
+			if (dwCount == 0 || dwCount != dwSize) {
+				return false;
+			}
+			std::string rstStr = strExpanded;
+			delete[]strExpanded;
+			return rstStr;
+		}
+		//获取当前目录
+		std::string getCurrentThisPath(HMODULE hModule)
+		{ 
+			char tzPath[MAX_PATH];
+			GetModuleFileName(hModule, tzPath, MAX_PATH); 
+			return tzPath;
+		}
+		//设置环境变量当前目录
+		bool setCurrentThisPath()
+		{
+			return SetCurrentDirectory(getCurrentThisPath(NULL).c_str());
+		}
 
 	}
 

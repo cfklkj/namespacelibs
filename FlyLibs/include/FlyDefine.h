@@ -64,3 +64,18 @@ va_end(list); \
 retString = va_dataResult; \
 free(va_dataResult); \
 }
+
+//获取函数地主  
+//FuncAddr  --DWORD  
+//FuncName   --函数名称  
+#define GetMemberFuncAddr_VC8(FuncAddr,FuncName)\
+		{                                               \
+		__asm                                       \
+		{                                           \
+		mov eax, offset FuncName                 \
+		};                                          \
+		__asm                                       \
+		{                                           \
+		mov FuncAddr, eax                       \
+		};                                          \
+		}

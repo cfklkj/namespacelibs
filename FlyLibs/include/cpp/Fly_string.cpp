@@ -2,6 +2,7 @@
 #include "..\FlyDefine.h"
 #include <Windows.h> 
 #include <string>
+#include <time.h>
 #pragma warning(disable:4996)
 #pragma comment(lib, "User32")
  
@@ -350,6 +351,74 @@ namespace Fly_string{
 				break;
 			}
 		} 
-		return isSame;
+		return !isSame ? isSame : *A == *B;
+	}
+	/*
+	string to time_t
+	时间格式 2018-4-24 0:00:08 或 2018-4-24
+	*/
+	int stringToTime(const std::string &strDateStr, time_t &timeData)
+	{
+		char *pBeginPos = (char*)strDateStr.c_str();
+		char stepDay = ' ';
+		char stepTime = ' ';
+		if (strDateStr.find('-') != -1)
+			stepDay = '-';
+		if (strDateStr.find('/') != -1)
+			stepDay = '/';
+		if (strDateStr.find(':') != -1)
+			stepTime = ':';
+		if (stepDay == ' ')
+			return -1;
+		std::string skip;
+		skip.push_back(stepDay);
+		char *pPos = strstr(pBeginPos, skip.c_str());
+		if (pPos == NULL)
+		{
+			printf("strDateStr[%s] err \n", strDateStr.c_str());
+			return -1;
+		}
+		int iYear = atoi(pBeginPos);
+		int iMonth = atoi(pPos + 1);
+		pPos = strstr(pPos + 1, skip.c_str());
+		if (pPos == NULL)
+		{
+			printf("strDateStr[%s] err \n", strDateStr.c_str());
+			return -1;
+		}
+
+		int iDay = atoi(pPos + 1);
+		int iHour = 0;
+		int iMin = 0;
+		int iSec = 0;
+		if (stepTime == ' ')
+			return -1;
+		pPos = strstr(pPos + 1, " ");
+		//为了兼容有些没精确到时分秒的  
+		if (pPos != NULL)
+		{
+			iHour = atoi(pPos + 1);
+			pPos = strstr(pPos + 1, ":");
+			if (pPos != NULL)
+			{
+				iMin = atoi(pPos + 1);
+				pPos = strstr(pPos + 1, ":");
+				if (pPos != NULL)
+				{
+					iSec = atoi(pPos + 1);
+				}
+			}
+		}
+
+		struct tm sourcedate;
+		memset((void*)&sourcedate, 0, sizeof(sourcedate));
+		sourcedate.tm_sec = iSec;
+		sourcedate.tm_min = iMin;
+		sourcedate.tm_hour = iHour;
+		sourcedate.tm_mday = iDay;
+		sourcedate.tm_mon = iMonth - 1;
+		sourcedate.tm_year = iYear - 1900;
+		timeData = mktime(&sourcedate);
+		return 0;
 	}
 }

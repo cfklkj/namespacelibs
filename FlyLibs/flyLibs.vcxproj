@@ -19,16 +19,35 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="include\cpp\Fly_algorithm_Base64.cpp" />
+    <ClCompile Include="include\cpp\Fly_algorithm_mdx.cpp" />
+    <ClCompile Include="include\cpp\Fly_debug.cpp" />
+    <ClCompile Include="include\cpp\Fly_disk.cpp" />
+    <ClCompile Include="include\cpp\Fly_file_Attribe.cpp" />
+    <ClCompile Include="include\cpp\Fly_file_file.cpp" />
+    <ClCompile Include="include\cpp\Fly_file_dir.cpp" />
+    <ClCompile Include="include\cpp\Fly_file_link.cpp" />
+    <ClCompile Include="include\cpp\help_cmd.cpp" />
+    <ClCompile Include="include\cpp\Fly_reg.cpp" />
     <ClCompile Include="include\cpp\Fly_string.cpp" />
+    <ClCompile Include="include\cpp\Fly_sys_attribe.cpp" />
     <ClCompile Include="include\cpp\Fly_sys_cpu.cpp" />
+    <ClCompile Include="include\cpp\Fly_sys_process.cpp" />
+    <ClCompile Include="include\cpp\Fly_sys_server.cpp" />
+    <ClCompile Include="include\cpp\Fly_sys_system.cpp" />
     <ClCompile Include="include\cpp\Fly_web_html.cpp" />
-    <ClCompile Include="include\cpp\fly_web_iocp.cpp" />
+    <ClCompile Include="include\cpp\Fly_web_iocp.cpp" />
     <ClCompile Include="include\cpp\Fly_web_raw.cpp" />
     <ClCompile Include="include\cpp\Fly_web_set.cpp" />
     <ClCompile Include="include\cpp\Fly_web_tcp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Fly_algorithm.h" />
     <ClInclude Include="include\FlyDefine.h" />
+    <ClInclude Include="include\Fly_debug.h" />
+    <ClInclude Include="include\Fly_disk.h" />
+    <ClInclude Include="include\Fly_file.h" />
+    <ClInclude Include="include\Fly_reg.h" />
     <ClInclude Include="include\Fly_string.h" />
     <ClInclude Include="include\Fly_sys.h" />
     <ClInclude Include="include\Fly_web.h" />

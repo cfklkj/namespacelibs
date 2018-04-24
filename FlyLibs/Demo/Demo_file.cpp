@@ -4,7 +4,7 @@
 #include "..\include\fly_string.h" 
 #pragma comment(lib, "..\\libs\\debug\\flyLibs")
 //#pragma comment(lib, "User32")
-#define DemoFile
+#define DemoFile1
 #ifdef DemoFile
 void main()
 #else
@@ -14,11 +14,16 @@ void DemoFile()
 	bool rstBool = 0;
 	std::string filePath = "C:\\Windows\\explorer.exe";
 	std::string rst = Fly_file::Attribe::getFileVersion(filePath);
-	printf("%s--version:%s\n", filePath.c_str(), rst.c_str());
+	printf("%s--version:%s\n", filePath.c_str(), rst.c_str()); 
 	ULONGLONG sizes = Fly_file::Attribe::getFileSize(filePath);
 	printf("%s--size:%d\n", filePath.c_str(), sizes);
 	rstBool = Fly_file::Attribe::isUnicodeFile(filePath);
 	printf("%s--isUnicode:%s\n", filePath.c_str(), rstBool ? "true": "false");
+
+
+	rst = Fly_file::Attribe::getFileDiscription(filePath);
+	printf("%s--discription:%s\n", filePath.c_str(), rst.c_str());
+
 
 	rst = Fly_file::Dir::getDirFromFullPath(filePath);
 	printf("%s--Dir:%d\n", filePath.c_str(), rst.c_str());
@@ -73,6 +78,8 @@ void DemoFile()
 	fileTail = "D:\\test.exe=>D:\\t.rar"; 
 	rstBool = Fly_file::File::tailFile(fileTail, pwd, 1);
 	printf("%s--tailFiles:%s\n", fileTail.c_str(), rstBool ? "true" : "false");
+
+
 	getchar();
 }
 

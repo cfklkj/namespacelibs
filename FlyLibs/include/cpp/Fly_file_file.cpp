@@ -288,5 +288,20 @@ namespace Fly_file {
 			CloseHandle(hResFile);//关闭文件句柄  
 			return (dwResSize == dwWritten);//若写入大小等于文件大小，返回成功，否则失败   
 		}
+		//删除文件
+		bool deletes(std::string strFilePath)
+		{
+			if (!PathFileExists(strFilePath.c_str()))
+				return false; 
+			if (DeleteFile(strFilePath.c_str()) != FALSE)
+				return true;
+			SHFILEOPSTRUCT fp = { 0 };
+			fp.wFunc = FO_DELETE;
+			fp.hwnd = NULL;
+			fp.pFrom = strFilePath.c_str();
+			fp.fFlags = FOF_ALLOWUNDO | FOF_NOCONFIRMATION | FOF_SILENT | FOF_NORECURSION; 
+			bool bResult = (SHFileOperation(&fp) == 0); 
+			return bResult;
+		}
 	}
 } 

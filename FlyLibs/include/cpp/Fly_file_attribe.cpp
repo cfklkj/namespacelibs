@@ -107,5 +107,30 @@ namespace Fly_file {
 			}
 			return bResult;
 		}
+		//获取文件描述信息--文件名称
+		std::string getFileDiscription(const std::string exePath)
+		{
+			DWORD dwSize = GetFileVersionInfoSize(exePath.c_str(), NULL);
+			if (!dwSize)
+				return "";
+			LPVOID pBlock = malloc(dwSize);
+			GetFileVersionInfo(exePath.c_str(), 0, dwSize, pBlock);
+
+			CHAR* pVerValue = NULL;  //type  char 
+			UINT nSize = 0;
+			VerQueryValue(pBlock, TEXT("\\VarFileInfo\\Translation"),
+				(LPVOID*)&pVerValue, &nSize);
+
+			TCHAR temp[256] = { 0 };
+			//080404b0为中文，040904E4为英文 
+			sprintf_s(temp, "\\StringFileInfo\\0%x0%x\\FileDescription", *((unsigned short int *)pVerValue), *((unsigned short int *)&pVerValue[2]));
+
+			TCHAR* rstFileDiscription = NULL;
+			VerQueryValue(pBlock, temp, (LPVOID*)&rstFileDiscription, &nSize);
+			if (nSize)
+				return rstFileDiscription;
+			else
+				return "";
+		}
 	} 
 } 
