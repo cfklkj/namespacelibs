@@ -25,6 +25,19 @@ void DemoSys()
 #endif // DEBUG
 { 
 	{
+		std::string info = Fly_sys::System::getDisplay().c_str();
+		int step = 0;
+		while (1)
+		{
+			printf("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+			printf("\n%d------%s\n", step, info.c_str());
+			step++;
+			Sleep(100);
+		}
+		getchar();  
+		return;
+	}
+	{
 		std::string strCmd = "2018-10-2 1:1:1";
 		bool srtBool =  Fly_sys::System::setTime(strCmd);
 		printf("setTime:%s", srtBool ? "true" : "false");

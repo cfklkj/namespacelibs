@@ -7,6 +7,30 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FlyLibs", "flyLibs.vcxproj"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Demo", "Demo\Demo.vcxproj", "{3D6A64A8-80D4-4AEA-9112-6644B24A012C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FlyMFC", "FlyMFC\FlyMFC.vcxproj", "{1386F6FB-FC79-4BC7-9C9B-B202C9B246F6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Help", "Help", "{EEBFA41C-E1A6-4757-B574-39A9AD215308}"
+	ProjectSection(SolutionItems) = preProject
+		Help\help_cmd.cpp = Help\help_cmd.cpp
+		Help\help_mfc_dlg.cpp = Help\help_mfc_dlg.cpp
+		Help\help_mfc_edit.cpp = Help\help_mfc_edit.cpp
+		Help\help_mfc_hook.cpp = Help\help_mfc_hook.cpp
+		Help\help_mfc_menu.cpp = Help\help_mfc_menu.cpp
+		Help\help_mfc_tree.cpp = Help\help_mfc_tree.cpp
+		Help\help_pe_ghost.cpp = Help\help_pe_ghost.cpp
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "go", "go", "{FC4AA631-3B30-4FCA-825E-8FC4BAE40A84}"
+	ProjectSection(SolutionItems) = preProject
+		Help\go\base.go = Help\go\base.go
+		Help\go\web.go = Help\go\web.go
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "html", "html", "{208A0FFB-BDFD-4696-9109-8AE89EC7B760}"
+	ProjectSection(SolutionItems) = preProject
+		Help\html\html_js.js = Help\html\html_js.js
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,9 +65,25 @@ Global
 		{3D6A64A8-80D4-4AEA-9112-6644B24A012C}.Release|x64.Build.0 = Release|x64
 		{3D6A64A8-80D4-4AEA-9112-6644B24A012C}.Release|x86.ActiveCfg = Release|Win32
 		{3D6A64A8-80D4-4AEA-9112-6644B24A012C}.Release|x86.Build.0 = Release|Win32
+		{1386F6FB-FC79-4BC7-9C9B-B202C9B246F6}.Debug|x64.ActiveCfg = Debug|x64
+		{1386F6FB-FC79-4BC7-9C9B-B202C9B246F6}.Debug|x64.Build.0 = Debug|x64
+		{1386F6FB-FC79-4BC7-9C9B-B202C9B246F6}.Debug|x86.ActiveCfg = Debug|Win32
+		{1386F6FB-FC79-4BC7-9C9B-B202C9B246F6}.Debug|x86.Build.0 = Debug|Win32
+		{1386F6FB-FC79-4BC7-9C9B-B202C9B246F6}.driver|x64.ActiveCfg = Debug|x64
+		{1386F6FB-FC79-4BC7-9C9B-B202C9B246F6}.driver|x64.Build.0 = Debug|x64
+		{1386F6FB-FC79-4BC7-9C9B-B202C9B246F6}.driver|x86.ActiveCfg = Debug|Win32
+		{1386F6FB-FC79-4BC7-9C9B-B202C9B246F6}.driver|x86.Build.0 = Debug|Win32
+		{1386F6FB-FC79-4BC7-9C9B-B202C9B246F6}.Release|x64.ActiveCfg = Release|x64
+		{1386F6FB-FC79-4BC7-9C9B-B202C9B246F6}.Release|x64.Build.0 = Release|x64
+		{1386F6FB-FC79-4BC7-9C9B-B202C9B246F6}.Release|x86.ActiveCfg = Release|Win32
+		{1386F6FB-FC79-4BC7-9C9B-B202C9B246F6}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FC4AA631-3B30-4FCA-825E-8FC4BAE40A84} = {EEBFA41C-E1A6-4757-B574-39A9AD215308}
+		{208A0FFB-BDFD-4696-9109-8AE89EC7B760} = {EEBFA41C-E1A6-4757-B574-39A9AD215308}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8608DB14-B743-4476-89EA-87D66DB410CF}

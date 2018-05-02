@@ -15,3 +15,6 @@
 
 //启动项
 //Software\\Microsoft\\Windows\\CurrentVersion\\Run
+
+//格式化
+//echo Y | format % s / q
