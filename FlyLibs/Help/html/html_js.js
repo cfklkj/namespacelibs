@@ -4,6 +4,8 @@ function main() {
     onLoginInit();
     var oBtn = document.getElementById('test');
     oBtn.onclick = GetSelectType;
+    oBtn.innerHTML = ""; //select 清空
+    oBtn.onchange = onok; //select 绑定函数
 }
 获取select信息 
     var project = document.getElementById('proInfo'); 
@@ -49,6 +51,12 @@ function main() {
             }                        
         } 
     }
+
+ 删除table
+  for (i=1;i< table.rows.length;)
+        {
+             table.deleteRow(i);  
+        }  
  
  获取自定义属性
  table.getAttribute("MyValues")
@@ -69,4 +77,44 @@ function main() {
  checkBox
  if(project.checked)
     alert("选中")
+
+设置滚动条
+div css   
+height: 60%;
+overflow-y: auto;
+
+div的宽度要大于table的宽度
+
+
+html 宽度document.body.clientWidth
+
+
+
+string--------------
+string to array   -->  A = B.split(',')
+查找子字符串  A.indexOf(B) > 0
+
+
+json----------------
+var userInfo = {"userName":vA, "password":vB};
+
+JSON.parse(jsonstr); //可以将json字符串转换成json对象 
+JSON.stringify(jsonobj); //可以将json对象转换成json对符串 
+
+遍历
+var json = [{dd:'SB',AA:'东东',re1:123},{cccc:'dd',lk:'1qw'}];
+for(var i=0,l=json.length;i<l;i++){
+    for(var key in json[i]){
+        alert(key+':'+json[i][key]);
+    }
+}
+
+css-------------
+border-left:1px solid #000 设置对象左边1px实线黑色边框
+
+html------
+<input type="file" id="file_input" multiple="multiple" />  选择文件
+<input type="file" id="file_input" webkitdirectory directory /> 选择目录
 */
+
+

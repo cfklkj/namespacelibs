@@ -229,7 +229,7 @@ namespace Fly_sys {
 		}
 		//分辨率
 		//获取分辨率信息
-		int  s_oldX = 0, s_oldY = 0;
+		static int  s_oldX = 0, s_oldY = 0;
 		std::string getDisplay()
 		{
 			DEVMODE NewDevMode;
@@ -263,7 +263,7 @@ namespace Fly_sys {
 				rstDisplay += tempBuff;
 			}
 			return rstDisplay;
-		}
+		} 
 		//设置分辨率
 		bool setDisplay(int pixX, int pixY)
 		{

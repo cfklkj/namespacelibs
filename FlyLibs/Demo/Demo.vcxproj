@@ -32,6 +32,7 @@
     <ClCompile Include="Demo_reg.cpp" />
     <ClCompile Include="Demo_string.cpp" />
     <ClCompile Include="Demo_sys.cpp" />
+    <ClCompile Include="Demo_test.cpp" />
     <ClCompile Include="Demo_web.cpp" />
   </ItemGroup>
   <ItemGroup>

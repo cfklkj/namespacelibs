@@ -249,6 +249,8 @@ namespace Fly_file {
 		{ 
 			char tzPath[MAX_PATH];
 			GetModuleFileName(hModule, tzPath, MAX_PATH); 
+			char *temp = strchr(tzPath, '\\');
+			temp[1] = 0;
 			return tzPath;
 		}
 		//设置环境变量当前目录

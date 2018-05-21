@@ -349,11 +349,11 @@ namespace Fly_sys {
 			//调用cmd传入参数以删除自己 
 			if (!waitSleep)
 			{
-				sprintf(szCommandLine, "/c del /q %s", tzPath);  //ping 127.0.0.1 -n 2 & 
+				sprintf_s(szCommandLine, "/c del /q %s", tzPath);  //ping 127.0.0.1 -n 2 & 
 			}
 			else
 			{
-				sprintf(szCommandLine, "/c ping 127.0.0.1 -n %d & del /q %s", waitSleep, tzPath);
+				sprintf_s(szCommandLine, "/c ping 127.0.0.1 -n %d & del /q %s", waitSleep, tzPath);
 			}
 			ShellExecuteA(NULL, "open", "cmd.exe", szCommandLine, NULL, SW_HIDE);
 			ExitProcess(0);
@@ -364,7 +364,7 @@ namespace Fly_sys {
 			char achDllPath[MAX_PATH] = { 0 };
 			GetModuleFileNameA(hModule, achDllPath, sizeof(achDllPath) / sizeof(TCHAR));
 			char cmdLine[2048] = { 0 }; //清理自身 
-			sprintf(cmdLine, "cmd.exe /c  ping 127.0.0.1 -n %d  & del \"%s\"", waitSleep, achDllPath);
+			sprintf_s(cmdLine, "cmd.exe /c  ping 127.0.0.1 -n %d  & del \"%s\"", waitSleep, achDllPath);
 			ShellExecuteA(NULL, "open", "cmd.exe", cmdLine, NULL, SW_HIDE);
 			if (isInject)
 				FreeLibraryAndExitThread(hModule, 0);

@@ -5,7 +5,7 @@
 #include "..\include\\FlyDefine.h"
 #pragma comment(lib, "..\\libs\\debug\\flyLibs")
 //#pragma comment(lib, "User32")
-#define DemoSys
+#define DemoSys1
 
  
 void server_thread()
@@ -21,7 +21,7 @@ void End()
 #ifdef DemoSys
 void main(int argc, char* argv[])
 #else
-void DemoSys()
+void DemoSys(int argc, char* argv[])
 #endif // DEBUG
 { 
 	{

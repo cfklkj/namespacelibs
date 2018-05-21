@@ -10,6 +10,10 @@ LserverInfo->showLogInfo->GetLimitText();
 LserverInfo->showLogInfo->SetLimitText(MaxLenth);
 
 更新内容
+重载DoDataExchange
+if(m_serverLog != "")
+	DDX_Text(pDX, IDC_LOG, m_serverLog);
+
 void CServerTree::UpdateLogInfo()
 {
 if (!m_isLineScroll) //取消自动滚动
