@@ -16,7 +16,11 @@ namespace Fly_web {
 		//从网址提取IP Port 如果存在:9080
 		std::string GetIpPortfromUrl(const char* URl); 
 
+	} 
+	namespace Test {
+		void Init();
 	}
+
 	namespace TCPs {
 		namespace server {
 			//创建服务套接字

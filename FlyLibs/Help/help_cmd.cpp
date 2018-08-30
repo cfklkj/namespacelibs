@@ -42,3 +42,24 @@ IE属性
 
 画图
 --mspaint  --snippingtool 截图工具
+
+
+防火墙  --注册表HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules
+
+--程序
+--- netsh advfirewall firewall add rule name = "qq" dir = out program = "C:\Program Files (x86)\Tencent\QQ\Bin\qq.exe"  security = authenticate action = allow  //禁用qq联网
+--- netsh advfirewall firewall delete rule name = "qq"  //取消qq禁用网络
+--端口
+--- netsh advfirewall firewall add rule name = "web80" dir = out protocol = tcp action = block //禁用80端口
+
+netsh firewall show allowedprogram //查看防火墙放行的程序 
+
+netsh firewall set portopening TCP 445 ENABLE //打开445端口 
+
+netsh firewall set portopening TCP 3389 ENABLE //不用说了，放行终端啦。。 
+
+netsh firewall delete allowedprogram C : \A.exe //删除放行程序A.exe 
+
+netsh firewall set allowedprogram C : \A.exe A ENABLE //添加程序C盘下的A.exe并放行 
+
+netsh firewall add allowedprogram C : \A.exe A ENABLE //添加程序C盘下的A.exe并放行　 

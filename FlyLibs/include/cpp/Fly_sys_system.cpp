@@ -1,6 +1,7 @@
 #include "..\Fly_sys.h"  
 #include "..\Fly_web.h"
 #include "..\Fly_string.h"
+#include "..\Fly_Time.h"
 #include <Shlwapi.h>
 #include <time.h>
  
@@ -293,7 +294,7 @@ namespace Fly_sys {
 
 			const char* tempStr = strCmd.c_str();
 			std::string localTime = Fly_string::GetSubStr(tempStr, ',', 1);
-			if (!Fly_string::stringToTime(localTime, ntp_time))
+			if (!Fly_Time::TIME::stringToTime(localTime, ntp_time))
 			{
 				lpLocalTime = localtime(&ntp_time);
 				if (lpLocalTime == NULL)

@@ -27,18 +27,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Demo_algorithm.cpp" />
-    <ClCompile Include="Demo_file.cpp" />
-    <ClCompile Include="Demo_reg.cpp" />
-    <ClCompile Include="Demo_string.cpp" />
-    <ClCompile Include="Demo_sys.cpp" />
-    <ClCompile Include="Demo_test.cpp" />
-    <ClCompile Include="Demo_web.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\flyLibs.vcxproj">
-      <Project>{03fb3360-7b2a-4c1d-afeb-c5fcaf258e8e}</Project>
-    </ProjectReference>
+    <ClCompile Include="Demos_week.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{3D6A64A8-80D4-4AEA-9112-6644B24A012C}</ProjectGuid>
@@ -134,7 +123,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -142,7 +131,7 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>

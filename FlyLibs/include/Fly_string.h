@@ -1,5 +1,6 @@
 #pragma once 
 #include <string>
+#include <vector>
 
 //----------------------------------------------------------------字符串-----------------
 namespace Fly_string {
@@ -36,15 +37,21 @@ namespace Fly_string {
 	void freeChar(char *pstr);
 	//格式化信息
 	std::string format(const char* formatStr, ...);
+	void FormatAppend(std::string& data, const char* format, ...);
 
+	std::wstring C2W(const std::string &charBuff);
+	std::string W2C(const std::wstring &wcharBuff);
+	std::string unicode2Utf8(const std::wstring& unicode);
+	std::string GBKToUTF8(const std::string& strGBK);
+	std::string UTF8ToGBK(const std::string& strUTF8);
+	std::string UTF8ToGBK(const char* szUtf8);
+	std::string trim(std::string& str);
+	std::string trimEnd(std::string &str);
+	 
 	//不区分大小写比较字符串是否相等
 	bool noCaseCompare(const char* A, const char* B);
 
-	/*
-	string to time_t
-	时间格式 2018-4-24 0:00:08 或 2018-4-24
-	成功返回 0
-	*/
-	int stringToTime(const std::string &strDateStr, time_t &timeData);
+	std::vector<std::string> splitEx(const std::string& src, std::string spX);
+	bool splitEx(const std::string& src, std::string spX, std::vector<std::string>& rstVct);
 
 }  

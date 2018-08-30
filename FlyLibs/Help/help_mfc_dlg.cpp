@@ -1,4 +1,10 @@
 /*
+内存泄漏检测  _CrtSetBreakAlloc(357);
+
+edit ->setwindowtext("")  清空不了所有信息  --》  SetLimitText  每隔一段时间windows会自动重置限制长度？
+*/
+
+/*
 --消息处理
 PreTranslateMessage(MSG* pMsg)
 回车-ESC处理
@@ -24,5 +30,22 @@ if (PathFileExists(filePath))
 {
 GetDlgItem(IDC_PATH)->SetWindowText(filePath);
 }
+}
+*/
+
+/*
+计算时间差
+#include<ctime>
+
+using namespace std;
+int main()
+{
+clock_t start, finish;
+start = clock(); 
+...
+finish = clock();
+
+cout <<"\n" <<finish - start << "/" << CLOCKS_PER_SEC << " (s) " << endl;
+return 0;
 }
 */

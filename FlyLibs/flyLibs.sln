@@ -19,6 +19,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Help", "Help", "{EEBFA41C-E
 		Help\help_mfc_menu.cpp = Help\help_mfc_menu.cpp
 		Help\help_mfc_tree.cpp = Help\help_mfc_tree.cpp
 		Help\help_pe_ghost.cpp = Help\help_pe_ghost.cpp
+		Help\help_sql.cpp = Help\help_sql.cpp
+		Help\help_vs_cmd.cpp = Help\help_vs_cmd.cpp
+		Help\help_内存泄漏_gui.cpp = Help\help_内存泄漏_gui.cpp
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "go", "go", "{FC4AA631-3B30-4FCA-825E-8FC4BAE40A84}"
@@ -31,6 +34,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "html", "html", "{208A0FFB-B
 	ProjectSection(SolutionItems) = preProject
 		Help\html\html_js.js = Help\html\html_js.js
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetMgr", "..\..\NetMgr\NetMgr.vcxproj", "{92EE10EE-DC84-4ED2-885D-AC3C10723B0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -78,6 +83,18 @@ Global
 		{1386F6FB-FC79-4BC7-9C9B-B202C9B246F6}.Release|x64.Build.0 = Release|x64
 		{1386F6FB-FC79-4BC7-9C9B-B202C9B246F6}.Release|x86.ActiveCfg = Release|Win32
 		{1386F6FB-FC79-4BC7-9C9B-B202C9B246F6}.Release|x86.Build.0 = Release|Win32
+		{92EE10EE-DC84-4ED2-885D-AC3C10723B0B}.Debug|x64.ActiveCfg = Debug|x64
+		{92EE10EE-DC84-4ED2-885D-AC3C10723B0B}.Debug|x64.Build.0 = Debug|x64
+		{92EE10EE-DC84-4ED2-885D-AC3C10723B0B}.Debug|x86.ActiveCfg = Debug|Win32
+		{92EE10EE-DC84-4ED2-885D-AC3C10723B0B}.Debug|x86.Build.0 = Debug|Win32
+		{92EE10EE-DC84-4ED2-885D-AC3C10723B0B}.driver|x64.ActiveCfg = Debug|x64
+		{92EE10EE-DC84-4ED2-885D-AC3C10723B0B}.driver|x64.Build.0 = Debug|x64
+		{92EE10EE-DC84-4ED2-885D-AC3C10723B0B}.driver|x86.ActiveCfg = Debug|Win32
+		{92EE10EE-DC84-4ED2-885D-AC3C10723B0B}.driver|x86.Build.0 = Debug|Win32
+		{92EE10EE-DC84-4ED2-885D-AC3C10723B0B}.Release|x64.ActiveCfg = Release|x64
+		{92EE10EE-DC84-4ED2-885D-AC3C10723B0B}.Release|x64.Build.0 = Release|x64
+		{92EE10EE-DC84-4ED2-885D-AC3C10723B0B}.Release|x86.ActiveCfg = Release|Win32
+		{92EE10EE-DC84-4ED2-885D-AC3C10723B0B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

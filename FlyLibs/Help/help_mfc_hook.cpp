@@ -126,3 +126,34 @@ bool InjectWinExec(TCHAR* pCmd, TCHAR* pCmdParam, char *dllPath, int sw_parame)
 	return Ingect(dllPath, 0, hwnd);  
 }
 */
+
+/*
+dll模块隐藏
+//http://www.goodgoodhack.com/a/chengxubiancheng/2456.html
+void EnumModule()
+{
+DWORD *PEB = NULL,
+*Ldr = NULL,
+*Flink = NULL,
+*p = NULL,
+*BaseAddress = NULL,
+*FullDllName = NULL;
+__asm
+{
+mov eax,fs:[0x30] //peb address
+mov PEB,eax
+}
+Ldr = *((DWORD**)((unsigned char*)PEB + 0x0c));
+Flink = *((DWORD**)((unsigned char*)Ldr + 0x14));
+p = Flink;
+p = *((DWORD**)p); //指针的指针 --  p =	p->next
+while (Flink != p)
+{
+BaseAddress = *((DWORD**)((unsigned char*)p + 0x10));
+FullDllName = *((DWORD**)((unsigned char*)p + 0x20));
+if (BaseAddress == 0) break;
+wprintf(L"ImageBase = %08x \r\n modlefullname=%s \r\n", BaseAddress, (unsigned char*)FullDllName);
+p = *((DWORD**)p);
+}
+}
+*/

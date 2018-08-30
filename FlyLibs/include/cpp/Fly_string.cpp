@@ -336,7 +336,140 @@ namespace Fly_string{
 		_FLY_STRING_FindBitSub_FORMAT(formatStr, rstStr);
 		return rstStr;
 	}
+	//字符串空格处理
+	std::string trimEnd(std::string &str)//去掉string的空格
+	{
+		if (str.empty())
+			return str;
+		const std::string &delim = " \t";
+		std::string r = str.erase(str.find_last_not_of(delim) + 1);
+		return r.erase(0, r.find_first_not_of(delim));
+	}
+	std::string trim(std::string& str)
+	{
+		if (str.empty())
+			return str;
+		std::string ret;
+		int first = 0;
+		size_t last = str.size() - 1;
 
+
+		while (str[first] == ' ') {
+			first++;
+			if (first == str.size()) {
+				break;
+			}
+
+		}
+
+		if (first == str.size()) {
+			return "";
+		}
+
+		while (str[last] == ' ') {
+			last--;
+			if (last < 0) {
+				break;
+			}
+		}
+		return str.substr(first, last - first + 1);
+	}
+
+	int ToInt(const std::string& str) {
+		return atoi(str.c_str());
+	}
+
+	void FormatAppend(std::string& data, const char* formatStr, ...) {
+		std::string retStr = "";
+		_FLY_STRING_FindBitSub_FORMAT(formatStr, retStr);
+		data += retStr;
+	}
+
+	//char 转 wchar
+	std::wstring C2W(const std::string &charBuff)
+	{
+		int nL = MultiByteToWideChar(CP_ACP, 0, charBuff.c_str(), -1, NULL, 0);
+		if (nL < 1)
+			return NULL;
+		WCHAR * wstr = new WCHAR[nL + 2];
+		if (!wstr)
+			return NULL;
+		MultiByteToWideChar(CP_ACP, 0, charBuff.c_str(), -1, wstr, nL);
+		std::wstring wstrOut = wstr;
+		delete[]wstr;
+		wstr = NULL;
+		return wstrOut;
+	}
+	//wchar 转 char
+	std::string W2C(const std::wstring &wcharBuff)
+	{
+		int nL = WideCharToMultiByte(0, 0, wcharBuff.c_str(), (int)wcharBuff.size(), NULL, 0, NULL, NULL);
+		if (nL < 1)
+			return NULL;
+		char* str = new char[nL + 1];
+		if (!str)
+			return NULL;
+		WideCharToMultiByte(0, 0, wcharBuff.c_str(), (int)wcharBuff.size(), str, nL, NULL, NULL);
+		str[nL] = 0;
+		std::string strOut = str;
+		delete[]str;
+		str = NULL;
+		return strOut;
+	}
+
+	//Unicode转Utf8		 	 
+	std::string unicode2Utf8(const std::wstring& unicode)
+	{
+		if (unicode.empty())
+			return "";
+		int len;
+		len = WideCharToMultiByte(CP_UTF8, 0, unicode.c_str(), -1, NULL, 0, NULL, NULL);
+		char * utf8 = new char[len + 1];
+		if (!utf8)
+		{
+			return "";
+		}
+		WideCharToMultiByte(CP_UTF8, 0, unicode.c_str(), -1, utf8, len, NULL, NULL);
+		std::string lastString = utf8;
+		delete[]utf8;
+		return lastString;
+	}
+	//1、将GBK转换成UTF8
+	std::string GBKToUTF8(const std::string& strGBK)
+	{
+		if (strGBK.empty())
+			return strGBK;
+		std::string strOutUTF8 = unicode2Utf8(C2W(strGBK));
+		strOutUTF8 = trimEnd(strOutUTF8);
+		return strOutUTF8;
+	}
+	// ------------ UTF-8转Unicode再转单字节，字符串 ----------------   
+	std::string UTF8ToGBK(const char* szUtf8)
+	{
+		int len = MultiByteToWideChar(CP_UTF8, 0, szUtf8, -1, NULL, 0);
+		WCHAR* wszUCD = new WCHAR[len];
+		memset(wszUCD, 0, len);
+		MultiByteToWideChar(CP_UTF8, 0, szUtf8, -1, wszUCD, len);
+
+		//获取缓冲区的大小，并申请空间，缓冲区大小是按字节计算的
+
+		int len2 = WideCharToMultiByte(CP_ACP, 0, wszUCD, -1, NULL, 0, NULL, NULL);
+
+		char *buffer = new char[len2];
+
+		WideCharToMultiByte(CP_ACP, 0, wszUCD, len, buffer, len2, NULL, NULL);
+
+		std::string strTemp(buffer);
+		delete[]wszUCD;
+		return strTemp;
+	}
+	//2、将UTF8转换成GBK
+	std::string UTF8ToGBK(const std::string& strUTF8)
+	{
+		std::string strTemp = UTF8ToGBK(strUTF8.c_str());
+		strTemp = trimEnd(strTemp);
+		return strTemp;
+	}
 	//不区分大小写比较字符串是否相等
 	bool noCaseCompare(const char* A, const char* B)
 	{
@@ -353,72 +486,30 @@ namespace Fly_string{
 		} 
 		return !isSame ? isSame : *A == *B;
 	}
-	/*
-	string to time_t
-	时间格式 2018-4-24 0:00:08 或 2018-4-24
-	*/
-	int stringToTime(const std::string &strDateStr, time_t &timeData)
+
+	//字符串分割
+	std::vector<std::string> splitEx(const std::string& src, std::string spX)
 	{
-		char *pBeginPos = (char*)strDateStr.c_str();
-		char stepDay = ' ';
-		char stepTime = ' ';
-		if (strDateStr.find('-') != -1)
-			stepDay = '-';
-		if (strDateStr.find('/') != -1)
-			stepDay = '/';
-		if (strDateStr.find(':') != -1)
-			stepTime = ':';
-		if (stepDay == ' ')
-			return -1;
-		std::string skip;
-		skip.push_back(stepDay);
-		char *pPos = strstr(pBeginPos, skip.c_str());
-		if (pPos == NULL)
+		std::vector<std::string> strs;
+		if (src.empty())
+			return strs;
+		int spLgth = (int)spX.size();												//分割字符串的长度,这样就可以支持如“,,”多字符串的分隔符
+		int lstPos = 0, index = -1;
+		while (-1 != (index = (int)src.find(spX, lstPos)))
 		{
-			printf("strDateStr[%s] err \n", strDateStr.c_str());
-			return -1;
+			strs.push_back(src.substr(lstPos, index - lstPos));
+			lstPos = index + spLgth;
 		}
-		int iYear = atoi(pBeginPos);
-		int iMonth = atoi(pPos + 1);
-		pPos = strstr(pPos + 1, skip.c_str());
-		if (pPos == NULL)
-		{
-			printf("strDateStr[%s] err \n", strDateStr.c_str());
-			return -1;
-		}
-
-		int iDay = atoi(pPos + 1);
-		int iHour = 0;
-		int iMin = 0;
-		int iSec = 0;
-		if (stepTime == ' ')
-			return -1;
-		pPos = strstr(pPos + 1, " ");
-		//为了兼容有些没精确到时分秒的  
-		if (pPos != NULL)
-		{
-			iHour = atoi(pPos + 1);
-			pPos = strstr(pPos + 1, ":");
-			if (pPos != NULL)
-			{
-				iMin = atoi(pPos + 1);
-				pPos = strstr(pPos + 1, ":");
-				if (pPos != NULL)
-				{
-					iSec = atoi(pPos + 1);
-				}
-			}
-		}
-
-		struct tm sourcedate;
-		memset((void*)&sourcedate, 0, sizeof(sourcedate));
-		sourcedate.tm_sec = iSec;
-		sourcedate.tm_min = iMin;
-		sourcedate.tm_hour = iHour;
-		sourcedate.tm_mday = iDay;
-		sourcedate.tm_mon = iMonth - 1;
-		sourcedate.tm_year = iYear - 1900;
-		timeData = mktime(&sourcedate);
-		return 0;
+		std::string lastString = src.substr(lstPos);														//截取最后一个分隔符后的内容
+		if (!lastString.empty())
+			strs.push_back(lastString);																		//如果最后一个分隔符后还有内容就入队
+		return strs;
+	}
+	bool splitEx(const std::string& src, std::string spX, std::vector<std::string>& rstVct)
+	{
+		if (src.empty())
+			return false;
+		rstVct = splitEx(src, spX);
+		return !rstVct.empty();
 	}
 }
