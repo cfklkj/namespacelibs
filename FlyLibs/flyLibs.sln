@@ -21,6 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Help", "Help", "{EEBFA41C-E
 		Help\help_pe_ghost.cpp = Help\help_pe_ghost.cpp
 		Help\help_sql.cpp = Help\help_sql.cpp
 		Help\help_vs_cmd.cpp = Help\help_vs_cmd.cpp
+		Help\help_位移.cpp = Help\help_位移.cpp
 		Help\help_内存泄漏_gui.cpp = Help\help_内存泄漏_gui.cpp
 	EndProjectSection
 EndProject
