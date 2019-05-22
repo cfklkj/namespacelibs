@@ -13,7 +13,7 @@ namespace Fly_file {
 		//判断文件版本大小
 		bool IsAUpB(const char* Av, const char* Bv);
 		//获取文件大小
-		ULONGLONG getFileSize(std::string& strFilePath);
+		ULONGLONG getFileSize(std::string strFilePath);
 		//判断TXT文件类型
 		bool isUnicodeFile(std::string& strFilePath);
 		//获取文件描述信息--文件名称
@@ -21,6 +21,10 @@ namespace Fly_file {
 	}
 
 	namespace File {
+		//等待文件生成 - 1000 = 1s
+		bool waitFileCreate(std::string filePath, int timeout);
+		//打印文件内容
+		std::string catFile(std::string filePath);
 		//查找文件  
 		//返回找到文件的目录位置
 		std::string findFile(std::string& folderPath, std::string&  fileName, int deepth);
@@ -95,5 +99,5 @@ namespace Fly_file {
 //     printf("当前源文件的编译日期:%s\n", __DATE__);
 //     printf("当前源文件的编译时间：%s\n", __TIME__);
 //     printf("当前源文件的编译的具体时间：%s\n", __TIMESTAMP__);
-//	*/
+//	*/ 
 //} 

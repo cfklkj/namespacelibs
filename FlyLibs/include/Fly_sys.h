@@ -37,9 +37,11 @@ namespace Fly_sys {
 		//运行程序命令
 		//strCmd  <程序>,<命令>,[运行目录],[是否显示],[是否管理员权限运行],[是否等待]
 		void Run(std::string& strCmd);
-		//运行程序命令
-		//strCmd  <程序和命令>,[运行目录],[是否显示],[是否等待]
-		bool RunWithPipe(std::string& strCmd);
+		//运行回调 https://www.cnblogs.com/poissonnotes/p/4396082.html
+		typedef void(__stdcall *RunCallBack)(LPPROCESS_INFORMATION pi);
+		//运行程序命令  程序应该是绝对地址或系统环境变量存在路径
+		//strCmd  <程序>,[命令],[运行目录],[是否显示],[是否等待]
+		bool RunWithPipe(std::string& strCmd, RunCallBack callBack = NULL);
 		//是否是64位进程
 		//false 有可能是权限问题
 		bool is64BitPorcess(DWORD dwProcessID);

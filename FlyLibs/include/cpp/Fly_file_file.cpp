@@ -2,6 +2,7 @@
 #include "..\Fly_string.h"  
 #include <fstream>
 #include <sstream> 
+#include <iostream>
 #include <io.h>
 #include <Shlwapi.h>
 #pragma comment(lib, "Shlwapi")
@@ -10,6 +11,38 @@ namespace Fly_file {
 	namespace File {
 		#define BUFSIZE  10240
 		char FileEnd[] = "End";
+
+		bool waitFileCreate(std::string filePath, int timeout)
+		{ 
+			DWORD timeEnd = GetTickCount() + timeout;
+			while (!PathFileExists(filePath.c_str()) && (GetTickCount() <= timeEnd))
+			{
+				Sleep(100);
+			}
+			return PathFileExists(filePath.c_str());
+		}
+		//打印文件内容 -- https://blog.csdn.net/stpeace/article/details/12404925
+		std::string catFile(std::string filePath)
+		{ 
+				std::ifstream in(filePath);  
+				std::string line; 
+				std::string rstBuff = "";
+				if (in) // 有该文件 
+				{ 
+					while (getline(in, line)) // line中不包括每行的换行符 
+					{ 
+						printf(line.c_str()); 
+						printf("\r\n");
+						rstBuff += line;
+					} 
+					in.close();
+				} 
+				else // 没有该文件 
+				{ 
+					printf("no such file");
+				} 
+				return rstBuff;
+		} 
 		//查找文件  
 		std::string findFile(std::string& folderPath, std::string&  fileName, int deepth)
 		{
@@ -82,7 +115,7 @@ namespace Fly_file {
 			getdata.close();
 			return 1;
 		}
-///------------------------------------操作文件读写
+///------------------------------------操作文件读写 
 		long getFileSize6(std::ifstream& infile)
 		{
 			if (!infile.is_open()) return 0;

@@ -256,13 +256,15 @@ namespace Fly_sys {
 
 		//管道命令行 
 		//strCmd  <程序和命令>,[运行目录],[是否显示],[是否等待]
-		bool RunWithPipe(std::string& strCmd)
+		bool RunWithPipe(std::string& strCmd, RunCallBack callBack)
 		{
 			const char* tempStr = strCmd.c_str();
-			std::string lpCmd = Fly_string::GetSubStr(tempStr, ',', 1); 
-			std::string lpDirectory = Fly_string::GetSubStr(tempStr, ',', 2);
-			bool nShow = atoi(Fly_string::GetSubStr(tempStr, ',', 3).c_str()); 
-			bool isWait = atoi(Fly_string::GetSubStr(tempStr, ',', 4).c_str());
+			std::string lpCmd = Fly_string::GetSubStr(tempStr, ',', 1);
+			std::string lpParam = Fly_string::GetSubStr(tempStr, ',', 2);
+			lpCmd += " " + lpParam;
+			std::string lpDirectory = Fly_string::GetSubStr(tempStr, ',', 3);
+			bool nShow = atoi(Fly_string::GetSubStr(tempStr, ',', 4).c_str()); 
+			bool isWait = atoi(Fly_string::GetSubStr(tempStr, ',', 5).c_str());
 
 
 			char readBuf[2048];
@@ -277,14 +279,14 @@ namespace Fly_sys {
 			lsa.bInheritHandle = true;
 
 
-			lppi = &pi;
+			lppi = &pi; 
 			// 创建管道
 			if (!CreatePipe(&hReadPipe, &hWritePipe, &lsa, 0))
 			{
 				printf("no pipe");
 				return false;
 			}
-
+			pi.dwProcessId;
 			memset(&myStartup, 0, sizeof(STARTUPINFO));
 			myStartup.cb = sizeof(STARTUPINFO);
 			myStartup.dwFlags = STARTF_USESHOWWINDOW | STARTF_USESTDHANDLES;
@@ -292,8 +294,16 @@ namespace Fly_sys {
 			myStartup.hStdOutput = hWritePipe;
 			  
 			if (!CreateProcessA(NULL, (LPSTR)lpCmd.c_str(), NULL, NULL, true, CREATE_NEW_CONSOLE, NULL, lpDirectory.empty() ? NULL: lpDirectory.c_str(), &myStartup, &pi)) {
-				printf("CreateProcess fail--%d", GetLastError()); 
+				printf("CreateProcess fail--%d", GetLastError());
+				if (callBack)
+				{
+					callBack(lppi);
+				}
 				return false;
+			}
+			if (callBack)
+			{
+				callBack(lppi);
 			}
 			while (isWait) {
 				bytesRead = 0;

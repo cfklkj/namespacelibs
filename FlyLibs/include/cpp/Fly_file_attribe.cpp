@@ -52,7 +52,7 @@ namespace Fly_file {
 		}
 		 
 		//获取文件大小
-		ULONGLONG getFileSize(std::string& strFilePath)
+		ULONGLONG getFileSize(std::string strFilePath)
 		{
 			static BOOL _bInitialized = FALSE;
 			static DWORD(WINAPI *_pfnGetCompressedFileSize)(LPCTSTR, LPDWORD) = NULL;
