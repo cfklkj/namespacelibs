@@ -179,6 +179,14 @@ namespace Fly_Time {
 			return 0;
 		}
 
+		std::string TickToTimeStr(int timeTick)
+		{
+			int h = timeTick / 3600;
+			int m = timeTick / 60 % 60;
+			int s = timeTick % 60;
+			return Fly_string::format("%02d:%02d:%02d", h, m ,s);
+		}
+
 		int GetMonthCardTimeValue()
 		{
 			SYSTEMTIME sys;

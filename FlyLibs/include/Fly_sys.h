@@ -25,6 +25,8 @@ namespace Fly_sys {
 		DWORD getNumberOfProcess();
 	}
 	namespace Process {
+		//获取自身模块 
+		HMODULE GetSelfModuleHandle(); 
 		//延迟函数  相当于 Sleep()
 		void TimeDelay(DWORD WaitTime);
 		//通过进程句柄获取进程信息
@@ -35,7 +37,7 @@ namespace Fly_sys {
 		//等待进程
 		bool WaitProcess(DWORD dwProId);
 		//运行程序命令
-		//strCmd  <程序>,<命令>,[运行目录],[是否显示],[是否管理员权限运行],[是否等待]
+		//strCmd  <程序>,<命令>,[运行目录],[是否显示],[是否等待],[是否管理员权限运行]
 		void Run(std::string& strCmd);
 		//运行回调 https://www.cnblogs.com/poissonnotes/p/4396082.html
 		typedef void(__stdcall *RunCallBack)(LPPROCESS_INFORMATION pi);

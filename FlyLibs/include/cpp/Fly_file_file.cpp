@@ -39,7 +39,7 @@ namespace Fly_file {
 				} 
 				else // 没有该文件 
 				{ 
-					printf("no such file");
+					printf("no such file:%s", filePath.c_str());
 				} 
 				return rstBuff;
 		} 

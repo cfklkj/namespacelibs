@@ -1,5 +1,6 @@
 #include "..\Fly_file.h" 
 #include "..\Fly_string.h"  
+#include "..\Fly_sys.h"  
 #include <Windows.h> 
 #include <fstream>
 #include <io.h>
@@ -248,8 +249,15 @@ namespace Fly_file {
 		std::string getCurrentThisPath(HMODULE hModule)
 		{ 
 			char tzPath[MAX_PATH];
-			GetModuleFileName(hModule, tzPath, MAX_PATH); 
-			char *temp = strchr(tzPath, '\\');
+			if (hModule == NULL)
+			{
+				GetModuleFileName(Fly_sys::Process::GetSelfModuleHandle(), tzPath, MAX_PATH);
+			}
+			else
+			{
+				GetModuleFileName(hModule, tzPath, MAX_PATH); 
+			}
+			char *temp = strrchr(tzPath, '\\');
 			temp[1] = 0;
 			return tzPath;
 		}

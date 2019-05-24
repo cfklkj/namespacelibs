@@ -38,6 +38,12 @@ namespace Fly_sys {
 			}
 			return hToken;
 		}
+		//获取自身模块  https://blog.csdn.net/chunleixiahe/article/details/79502724
+		HMODULE GetSelfModuleHandle()
+		{
+			MEMORY_BASIC_INFORMATION mbi;
+			return ((::VirtualQuery(GetSelfModuleHandle, &mbi, sizeof(mbi)) != 0) ? (HMODULE)mbi.AllocationBase : NULL);
+		}
 		//延迟函数  相当于 Sleep()
 		void TimeDelay(DWORD WaitTime)
 		{
@@ -199,7 +205,7 @@ namespace Fly_sys {
 			return error;
 		}
 		//---------------------------run---
-				//strCmd  <程序>,<命令>,[运行目录],[是否显示],[是否管理员权限运行],[是否等待]
+		//strCmd  <程序>,<命令>,[运行目录],[是否显示],[是否等待],[是否管理员权限运行]
 		void Run(std::string& strCmd)
 		{
 			const char* tempStr = strCmd.c_str();
@@ -207,8 +213,8 @@ namespace Fly_sys {
 			std::string lpParam = Fly_string::GetSubStr(tempStr, ',', 2);
 			std::string lpDirectory = Fly_string::GetSubStr(tempStr, ',', 3);
 			bool nShow = atoi(Fly_string::GetSubStr(tempStr, ',', 4).c_str());
-			bool isRunAs = atoi(Fly_string::GetSubStr(tempStr, ',', 5).c_str());
-			bool isWait = atoi(Fly_string::GetSubStr(tempStr, ',', 6).c_str());
+			bool isWait = atoi(Fly_string::GetSubStr(tempStr, ',',5).c_str());
+			bool isRunAs = atoi(Fly_string::GetSubStr(tempStr, ',', 6).c_str());
 
 			//执行
 			HINSTANCE hInstLibrary = LoadLibrary("Shell32.dll");
