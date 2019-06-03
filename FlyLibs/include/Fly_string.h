@@ -4,6 +4,10 @@
 
 //----------------------------------------------------------------×Ö·û´®-----------------
 namespace Fly_string {
+	namespace makeStr {
+		//´´½¨guid
+		std::string generateGuid();
+	};
 	//wchar to char
 	std::string w2c(const wchar_t *pwstr);
 	//char to wchar
