@@ -1,5 +1,5 @@
-#include "..\Fly_string.h"
-#include "..\FlyDefine.h"
+#include "Fly_string.h"
+#include "FlyDefine.h"
 #include <Windows.h> 
 #include <string>
 #include <time.h>
@@ -464,6 +464,32 @@ namespace Fly_string{
 		std::string strOutUTF8 = unicode2Utf8(C2W(strGBK));
 		strOutUTF8 = trimEnd(strOutUTF8);
 		return strOutUTF8;
+	}
+
+
+	char* GBKToUTF8_char(const char* chGBK)
+	{
+
+		DWORD dWideBufSize = MultiByteToWideChar(CP_ACP, 0, (LPCSTR)chGBK, -1, NULL, 0);
+
+		wchar_t * pWideBuf = new wchar_t[dWideBufSize];
+
+		wmemset(pWideBuf, 0, dWideBufSize);
+
+		MultiByteToWideChar(CP_ACP, 0, (LPCSTR)chGBK, -1, pWideBuf, dWideBufSize); 
+
+		DWORD dUTF8BufSize = WideCharToMultiByte(CP_UTF8, 0, (LPCWSTR)pWideBuf, -1, NULL, 0, NULL, NULL); 
+
+		char * pUTF8Buf = new char[dUTF8BufSize];
+
+		memset(pUTF8Buf, 0, dUTF8BufSize);
+
+		int lenth = WideCharToMultiByte(CP_UTF8, 0, (LPCWSTR)pWideBuf, -1, pUTF8Buf, dUTF8BufSize, NULL, NULL);  
+
+		delete[]pWideBuf; 
+
+		return pUTF8Buf;
+
 	}
 	// ------------ UTF-8转Unicode再转单字节，字符串 ----------------   
 	std::string UTF8ToGBK(const char* szUtf8)

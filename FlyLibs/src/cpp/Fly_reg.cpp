@@ -1,7 +1,7 @@
-#include "..\Fly_debug.h"
-#include "..\Fly_reg.h"
-#include "..\Fly_string.h"
-#include "..\FlyDefine.h"
+#include "Fly_debug.h"
+#include "Fly_reg.h"
+#include "Fly_string.h"
+#include "FlyDefine.h"
 #pragma comment(lib, "Advapi32")
 
 #include  <locale.h> //œ‘ æwstring ÷–Œƒ

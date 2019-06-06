@@ -90,9 +90,6 @@ namespace Fly_sys {
 		//设置分辨率
 		//pixX = 0 or pixY = 0  自动设置最佳分辨率
 		bool setDisplay(int pixX, int pixY);
-		//设置系统时间
-		//[时间],[NTPIP|URL]   时间格式 2018-4-24 0:00:08
-		bool setTime(std::string& strCmd);
 	}
 	namespace Key {
 

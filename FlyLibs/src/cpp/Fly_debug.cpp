@@ -1,5 +1,5 @@
-#include "..\Fly_debug.h"
-#include "..\FlyDefine.h"
+#include "Fly_debug.h"
+#include "FlyDefine.h"
 #include <Windows.h> 
 #include <string>
 #pragma warning(disable:4996)

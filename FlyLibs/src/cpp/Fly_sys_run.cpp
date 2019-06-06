@@ -1,6 +1,4 @@
-#include "stdafx.h" 
-#include "..\..\SysAct.h"
-#include "..\..\StringAct.h"
+#include "SysAct.h" 
 #include <Windows.h>
 #include <shlwapi.h>
 #include <ShellAPI.h>
@@ -16,52 +14,7 @@
 //MyImpersonateLoggedOnUser
 #include <WtsApi32.h>
 #pragma comment(lib, "WtsApi32.lib")
-
-namespace Fly_run {
-	typedef	BOOL(__stdcall *pShellExecuteEx)(
-		_Inout_ SHELLEXECUTEINFO *pExecInfo
-		);
-	//等待执行
-	void WinExecWait(WCHAR* pCmd, WCHAR* pCmdParam, int sw_parame, WCHAR* Directory, bool isWait)
-	{
-
-		HINSTANCE hInstLibrary = LoadLibrary("Shell32.dll");
-		if (!hInstLibrary)
-			return;
-		pShellExecuteEx tShell = (pShellExecuteEx)GetProcAddress(hInstLibrary, "ShellExecuteExW");
-		if (tShell)
-		{
-			SHELLEXECUTEINFO ShExecInfo = { 0 };
-
-			ShExecInfo.cbSize = sizeof(SHELLEXECUTEINFO);
-
-			ShExecInfo.fMask = SEE_MASK_NOCLOSEPROCESS;
-
-			ShExecInfo.hwnd = NULL;
-
-			if (IsOsVersionVistaOrGreater())
-			{
-				ShExecInfo.lpVerb = L"runas";  //管理员权限运行
-			}
-			else
-				ShExecInfo.lpVerb = NULL;
-
-			ShExecInfo.lpFile = pCmd;
-
-			ShExecInfo.lpParameters = pCmdParam;
-
-			ShExecInfo.lpDirectory = Directory;
-
-			ShExecInfo.nShow = sw_parame;
-
-			ShExecInfo.hInstApp = NULL;
-
-			tShell(&ShExecInfo);
-			isWait ? WaitForSingleObject(ShExecInfo.hProcess, INFINITE) : 0;
-		}
-		FreeLibrary(hInstLibrary);
-	}
-}
+ 
 
 namespace FLYLIB{
 

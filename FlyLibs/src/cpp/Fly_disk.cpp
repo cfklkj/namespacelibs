@@ -2,8 +2,8 @@
   http://blog.csdn.net/cybermanlee/article/details/1600080
 
 ********************************************************************************/
-#include "..\Fly_file.h" 
-#include "..\Fly_string.h"  
+#include "Fly_file.h" 
+#include "Fly_string.h"  
  
 #include <windows.h>
 #include <winioctl.h> 

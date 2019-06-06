@@ -1,5 +1,5 @@
-#include "..\Fly_sys.h"   
-#include "..\Fly_string.h"
+#include "Fly_sys.h"   
+#include "Fly_string.h"
 #include <Shlwapi.h> 
  
 

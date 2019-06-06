@@ -1,6 +1,6 @@
-#include "..\Fly_debug.h"
-#include "..\Fly_algorithm.h"
-#include "..\FlyDefine.h"
+#include "Fly_debug.h"
+#include "Fly_algorithm.h"
+#include "FlyDefine.h"
 #include <iostream>
 #pragma warning(once:4996)
 

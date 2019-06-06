@@ -19,43 +19,38 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="include\cpp\Fly_algorithm_Base64.cpp" />
-    <ClCompile Include="include\cpp\Fly_algorithm_mdx.cpp" />
-    <ClCompile Include="include\cpp\Fly_debug.cpp" />
-    <ClCompile Include="include\cpp\Fly_disk.cpp" />
-    <ClCompile Include="include\cpp\Fly_file_Attribe.cpp" />
-    <ClCompile Include="include\cpp\Fly_file_file.cpp" />
-    <ClCompile Include="include\cpp\Fly_file_dir.cpp" />
-    <ClCompile Include="include\cpp\Fly_file_link.cpp" />
-    <ClCompile Include="include\cpp\Fly_sys_keyboard.cpp" />
-    <ClCompile Include="include\cpp\Fly_reg.cpp" />
-    <ClCompile Include="include\cpp\Fly_string.cpp" />
-    <ClCompile Include="include\cpp\Fly_sys_attribe.cpp" />
-    <ClCompile Include="include\cpp\Fly_sys_cpu.cpp" />
-    <ClCompile Include="include\cpp\Fly_sys_process.cpp" />
-    <ClCompile Include="include\cpp\Fly_sys_server.cpp" />
-    <ClCompile Include="include\cpp\Fly_sys_system.cpp" />
-    <ClCompile Include="include\cpp\Fly_web_catch.cpp" />
-    <ClCompile Include="include\cpp\Fly_web_html.cpp" />
-    <ClCompile Include="include\cpp\Fly_web_iocp.cpp" />
-    <ClCompile Include="include\cpp\Fly_web_raw.cpp" />
-    <ClCompile Include="include\cpp\Fly_web_set.cpp" />
-    <ClCompile Include="include\cpp\Fly_web_tcp.cpp" />
-    <ClCompile Include="include\Fly_CwriteLog.cpp" />
-    <ClCompile Include="include\Fly_Time.cpp" />
+    <ClCompile Include="src\cpp\Fly_algorithm_Base64.cpp" />
+    <ClCompile Include="src\cpp\Fly_algorithm_mdx.cpp" />
+    <ClCompile Include="src\cpp\Fly_CwriteLog.cpp" />
+    <ClCompile Include="src\cpp\Fly_debug.cpp" />
+    <ClCompile Include="src\cpp\Fly_disk.cpp" />
+    <ClCompile Include="src\cpp\Fly_file_attribe.cpp" />
+    <ClCompile Include="src\cpp\Fly_file_dir.cpp" />
+    <ClCompile Include="src\cpp\Fly_file_file.cpp" />
+    <ClCompile Include="src\cpp\Fly_file_link.cpp" />
+    <ClCompile Include="src\cpp\Fly_mfc_notify.cpp" />
+    <ClCompile Include="src\cpp\Fly_reg.cpp" />
+    <ClCompile Include="src\cpp\Fly_string.cpp" />
+    <ClCompile Include="src\cpp\Fly_sys_attribe.cpp" />
+    <ClCompile Include="src\cpp\Fly_sys_cpu.cpp" />
+    <ClCompile Include="src\cpp\Fly_sys_keyboard.cpp" />
+    <ClCompile Include="src\cpp\Fly_sys_process.cpp" />
+    <ClCompile Include="src\cpp\Fly_sys_server.cpp" />
+    <ClCompile Include="src\cpp\Fly_sys_system.cpp" />
+    <ClCompile Include="src\cpp\Fly_Time.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Fly_algorithm.h" />
-    <ClInclude Include="include\FlyDefine.h" />
-    <ClInclude Include="include\Fly_CwriteLog.h" />
-    <ClInclude Include="include\Fly_debug.h" />
-    <ClInclude Include="include\Fly_disk.h" />
-    <ClInclude Include="include\Fly_file.h" />
-    <ClInclude Include="include\Fly_reg.h" />
-    <ClInclude Include="include\Fly_string.h" />
-    <ClInclude Include="include\Fly_sys.h" />
-    <ClInclude Include="include\Fly_Time.h" />
-    <ClInclude Include="include\Fly_web.h" />
+    <ClInclude Include="src\include\FlyDefine.h" />
+    <ClInclude Include="src\include\Fly_algorithm.h" />
+    <ClInclude Include="src\include\Fly_CwriteLog.h" />
+    <ClInclude Include="src\include\Fly_debug.h" />
+    <ClInclude Include="src\include\Fly_disk.h" />
+    <ClInclude Include="src\include\Fly_file.h" />
+    <ClInclude Include="src\include\Fly_mfc.h" />
+    <ClInclude Include="src\include\Fly_reg.h" />
+    <ClInclude Include="src\include\Fly_string.h" />
+    <ClInclude Include="src\include\Fly_sys.h" />
+    <ClInclude Include="src\include\Fly_Time.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -70,6 +65,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
@@ -111,16 +107,21 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)libs\$(Configuration)</OutDir>
+    <OutDir>$(SolutionDir)libs\$(Platform)</OutDir>
+    <IncludePath>$(SolutionDir)namespacelibs\FlyLibs\src\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)libs\$(Configuration)</OutDir>
+    <OutDir>$(SolutionDir)libs\$(Platform)</OutDir>
+    <IncludePath>$(SolutionDir)namespacelibs\FlyLibs\src\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)libs\$(Configuration)</OutDir>
+    <OutDir>$(SolutionDir)libs\$(Platform)\$(Configuration)\</OutDir>
+    <IncludePath>$(SolutionDir)namespacelibs\FlyLibs\src\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)libs\$(Configuration)</OutDir>
+    <OutDir>$(SolutionDir)libs\$(Platform)\$(Configuration)\</OutDir>
+    <IncludePath>$(SolutionDir)namespacelibs\FlyLibs\src\include;$(IncludePath)</IncludePath>
+    <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -128,6 +129,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -136,6 +138,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -161,6 +164,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

@@ -47,6 +47,8 @@ namespace Fly_string {
 	std::string W2C(const std::wstring &wcharBuff);
 	std::string unicode2Utf8(const std::wstring& unicode);
 	std::string GBKToUTF8(const std::string& strGBK);
+	//use end need freeChar()
+	char* GBKToUTF8_char(const char* chGBK);
 	std::string UTF8ToGBK(const std::string& strUTF8);
 	std::string UTF8ToGBK(const char* szUtf8);
 	std::string trim(std::string& str);

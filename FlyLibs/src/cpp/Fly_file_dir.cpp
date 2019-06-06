@@ -1,6 +1,6 @@
-#include "..\Fly_file.h" 
-#include "..\Fly_string.h"  
-#include "..\Fly_sys.h"  
+#include "Fly_file.h" 
+#include "Fly_string.h"  
+#include "Fly_sys.h"  
 #include <Windows.h> 
 #include <fstream>
 #include <io.h>

@@ -1,5 +1,5 @@
-#include "..\Fly_file.h" 
-#include "..\Fly_string.h"  
+#include "Fly_file.h" 
+#include "Fly_string.h"  
 #include <fstream>
 #include <sstream> 
 #include <iostream>
@@ -30,9 +30,7 @@ namespace Fly_file {
 				if (in) // 有该文件 
 				{ 
 					while (getline(in, line)) // line中不包括每行的换行符 
-					{ 
-						printf(line.c_str()); 
-						printf("\r\n");
+					{  
 						rstBuff += line;
 					} 
 					in.close();
@@ -42,7 +40,52 @@ namespace Fly_file {
 					printf("no such file:%s", filePath.c_str());
 				} 
 				return rstBuff;
-		} 
+		}
+		bool  findInFile(std::string filePath, const std::string findStr)
+		{
+			std::ifstream in(filePath);
+			std::string line; 
+			if (in) // 有该文件 
+			{
+				const char* temp = findStr.c_str();
+				while (getline(in, line))
+				{  
+					const char* Fullstr = line.c_str();
+					while (*Fullstr != 0 && *temp != 0)
+					{
+						if (*Fullstr++ == *temp)
+						{
+							temp++;
+						}
+						else
+							temp = findStr.c_str();
+					}
+					if (*temp == 0)
+					{
+						in.close();
+						return true;
+					}
+				}
+				in.close();
+			} 
+			return false;
+		}
+		bool echoToFile(std::string filePath, std::string body, bool isAppend)
+		{
+
+			FILE *stream;
+			fopen_s(&stream, filePath.c_str(), !isAppend ? "w": "a+");
+			if (!stream)
+				return false; 
+			if (stream)
+			{
+				fprintf(stream, "%s\n", body.c_str()); 
+				fclose(stream); 
+				return true;
+			}
+			return false;
+		}
+
 		//查找文件  
 		std::string findFile(std::string& folderPath, std::string&  fileName, int deepth)
 		{

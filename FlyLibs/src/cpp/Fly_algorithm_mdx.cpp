@@ -1,6 +1,6 @@
-#include "..\Fly_debug.h"
-#include "..\Fly_algorithm.h"
-#include "..\FlyDefine.h"
+#include "Fly_debug.h"
+#include "Fly_algorithm.h"
+#include "FlyDefine.h"
 #pragma warning(once:4996)
 
 namespace Fly_algorithm

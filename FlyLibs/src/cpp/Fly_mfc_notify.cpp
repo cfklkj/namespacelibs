@@ -1,5 +1,5 @@
 #include <afxcontrolbars.h> 
-#include "..\Fly_mfc.h" 
+#include "Fly_mfc.h" 
 
 //#define WM_SYSTEMTRAY (WM_USER + 101)
 

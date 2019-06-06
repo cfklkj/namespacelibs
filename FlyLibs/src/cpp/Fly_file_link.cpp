@@ -1,7 +1,7 @@
-#include "..\Fly_file.h"
-#include "..\Fly_debug.h"
-#include "..\Fly_string.h"
-#include "..\FlyDefine.h" 
+#include "Fly_file.h"
+#include "Fly_debug.h"
+#include "Fly_string.h"
+#include "FlyDefine.h" 
 #include <Windows.h>
 #include <fstream>
 #include <sstream> 

@@ -25,6 +25,10 @@ namespace Fly_file {
 		bool waitFileCreate(std::string filePath, int timeout);
 		//打印文件内容
 		std::string catFile(std::string filePath);
+		//写入文件内容
+		bool echoToFile(std::string filePath, std::string body, bool isAppend);
+		//在文件中查找字符串
+		bool  findInFile(std::string filePath, const std::string findStr);
 		//查找文件  
 		//返回找到文件的目录位置
 		std::string findFile(std::string& folderPath, std::string&  fileName, int deepth);
