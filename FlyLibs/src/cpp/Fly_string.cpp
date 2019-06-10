@@ -328,6 +328,53 @@ namespace Fly_string{
 		else
 			return rstStr;
 	}
+	std::string delChar(const char * pzStr, const char * Chrs, int where)
+	{
+		if (!pzStr || !Chrs)
+			return "";
+		if (where == 3)
+		{
+			std::string tmp = delChar(pzStr, Chrs, 1);
+			return delChar(tmp.c_str(), Chrs, 2);
+		}
+		std::string rst = "";
+		if (where == 1)
+		{ 
+			std::string tmp = "";
+			tmp.push_back(*pzStr);
+			if (!FindSub(Chrs, tmp.c_str()))
+				rst.push_back(*pzStr);
+			while (pzStr && *++pzStr != '\0')
+			{  
+				rst.push_back(*pzStr);
+			}
+		}
+		else if (where == 2)
+		{
+			char tmpChar = *pzStr;
+			while (pzStr && *pzStr != '\0')
+			{
+				tmpChar = *pzStr;
+				std::string tmp = "";
+				tmp.push_back(tmpChar);
+				if (*++pzStr == '\0' && FindSub(Chrs, tmp.c_str()))
+					break;
+				rst.push_back(tmpChar);
+			} 
+		}
+		else
+		{
+			while (pzStr && *pzStr != '\0')
+			{
+				std::string tmp = "";
+				tmp.push_back(*pzStr);
+				if (!FindSub(Chrs, tmp.c_str()))
+					rst.push_back(*pzStr);
+				pzStr++;
+			}
+		}
+		return rst;
+	}
 	//¿½±´×Ö·û´®
 	char* strMalloc(const char* _source)
 	{
